@@ -48,6 +48,6 @@ class wtPlot(widgets.Output):
     def redraw(self): pass 
     def update(self,v):
         self._caller=v
-        self._ax.clear
+        self._ax.clear()
         self.redraw()
         self._fig.canvas.draw_idle()

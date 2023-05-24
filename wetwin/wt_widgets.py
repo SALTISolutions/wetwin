@@ -1,6 +1,6 @@
 
 import ipywidgets as widgets
-from wtcore.variables import *
+from wetwin.wt_variables import *
 
 class WtIntSlider(widgets.IntSlider):
     def __init__(self,v: IntVariable, orientation='horizontal'):
