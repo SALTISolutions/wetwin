@@ -12,3 +12,4 @@ ipywidgets
 zarr
 fsspec
 aiohttp
+leafmap
