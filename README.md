@@ -5,6 +5,16 @@ __Collaborative digital twin modelling__
 
 ## Showing results on the web
 
+The interactive notebooks will move to use Solara (https://github.com/widgetti/solara). This has several advantages over using ipywidgets and ipyleaflet with voila. The main one is that in addition to use in notebooks the pages can also be served efficiently in a direct way, using `solara run myapp.py`. The code between a notebook and the app can be identical except for one call at the end to start the app.
+
+This change in course changes many things in this repository. It will take some time to adapt to the new approach and rewrite the existing examples.
+
+## Solara
+
+Solara is a python package for the development of interactive web-based interfaces. The package is compatible with the use of Jupyter notebooks, but you can also run a app using the solara server. The matter mode is much more efficient and can handle multiple users. In that case the app runs separately for each user, but with only one server. A simple example to see this in action is at (https://giswqs-solara.hf.space), which runs the app.py found here (https://huggingface.co/spaces/giswqs/solara/tree/main). There is also exellent documentation for Solara at (https://solara.dev/docs/quickstart)
+
+## Older readme part
+
 In addition to making data available on the web you can also run juptyer notebooks on the web. In this way you can show your results in an interactive manner without the need for installation of python on the computer of the person to whom you want to show your work. A url is enough! There are several options for hosting jupyter notebooks (eg colab), but here we'll use binder as an example: 
 
 - Play notebook without source using 'Voila':
