@@ -1,0 +1,16 @@
+name: wetwin
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - solara
+  - matplotlib
+  - xarray
+  - zarr
+  - h5netcdf
+  - fsspec
+  - aiohttp
+  - ipywidgets
+  - ipympl
+  - leafmap
