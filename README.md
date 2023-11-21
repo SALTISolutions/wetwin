@@ -13,6 +13,14 @@ This change in course changes many things in this repository. It will take some 
 
 Solara is a python package for the development of interactive web-based interfaces. The package is compatible with the use of Jupyter notebooks, but you can also run a app using the solara server. The matter mode is much more efficient and can handle multiple users. In that case the app runs separately for each user, but with only one server. A simple example to see this in action is at (https://giswqs-solara.hf.space), which runs the app.py found here (https://huggingface.co/spaces/giswqs/solara/tree/main). There is also exellent documentation for Solara at (https://solara.dev/docs/quickstart)
 
+## Connecting Wetwin frontend to Solara
+
+The wetwin frontend will be down-scaled to a few common widgets for the geosciences and a number of demos for use in this context. These examples will be a little bit more elaborate, also showing for example how to connect to data over internet and displaying data.
+
+## Examples
+
+- __wetwin_solara_widgets.ipynb__ gives a brief overview of some widgets in a notebook. 
+
 ## Older readme part
 
 In addition to making data available on the web you can also run juptyer notebooks on the web. In this way you can show your results in an interactive manner without the need for installation of python on the computer of the person to whom you want to show your work. A url is enough! There are several options for hosting jupyter notebooks (eg colab), but here we'll use binder as an example: 

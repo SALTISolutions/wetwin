@@ -11,7 +11,7 @@ def Page():
     # Calculate word_count within the component to ensure re-execution when reactive variables change.
     word_count = len(sentence.value.split())
 
-    solara.SliderInt("Word limit", value=word_limit, min=2, max=20)
+    solara.SliderInt("Word limit", value=word_limit, min=2, max=10)
     solara.InputText(label="Your sentence", value=sentence, continuous_update=True)
 
     # Display messages based on the current word count and word limit.
@@ -24,4 +24,4 @@ def Page():
 
 
 # The following line is required only when running the code in a Jupyter notebook:
-Page()
+#Page()
