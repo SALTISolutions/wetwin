@@ -5,9 +5,7 @@ __Collaborative digital twin modelling__
 
 ## Showing results on the web
 
-The interactive notebooks will move to use Solara (https://github.com/widgetti/solara). This has several advantages over using ipywidgets and ipyleaflet with voila. The main one is that in addition to use in notebooks the pages can also be served efficiently in a direct way, using `solara run myapp.py`. The code between a notebook and the app can be identical except for one call at the end to start the app.
-
-This change in course changes many things in this repository. It will take some time to adapt to the new approach and rewrite the existing examples.
+The interactive notebooks in this wetwin package are based on [Solara](https://github.com/widgetti/solara). This has several advantages over using ipywidgets and ipyleaflet directly. The main one is that in addition to use in notebooks the pages can also be served efficiently in a direct way, using `solara run myapp.py`. The code between a notebook and the app can be identical except for one call at the end to start the app. Another advantage is the use of reactive variables, which are variables that can be linked to multiple widgets and each widget can change and use the variable. This makes it easy to have two panels showing data for the same time, for example. With callback functions, this would quickly become very complex.
 
 ## Solara
 
@@ -15,34 +13,31 @@ Solara is a python package for the development of interactive web-based interfac
 
 ## Connecting Wetwin frontend to Solara
 
-The wetwin frontend will be down-scaled to a few common widgets for the geosciences and a number of demos for use in this context. These examples will be a little bit more elaborate, also showing for example how to connect to data over internet and displaying data.
-
+In the past wetwin aimed to implement its own datatypes, that were similar to the reactive variables, but all of this code has now been removed and the examples make use of Solara only. There are a few new widgets and functions to support the development of visualization of geophysical data, like maps and time-series, but the added functionality is limited and the Solara documentation, together with the examples should give a good idea of the possibilities. 
 ## Examples
 
-- __wetwin_solara_widgets.ipynb__ gives a brief overview of some widgets in a notebook. 
+- `jupyter notebook wetwin_solara_widgets.ipynb` gives a brief overview of some widgets in a notebook.
 
-## Older readme part
+## Getting started
 
-In addition to making data available on the web you can also run juptyer notebooks on the web. In this way you can show your results in an interactive manner without the need for installation of python on the computer of the person to whom you want to show your work. A url is enough! There are several options for hosting jupyter notebooks (eg colab), but here we'll use binder as an example: 
+The wetwin code makes use of several puython packages, that are need to be installed before you can run the examples successfully. You can do this manually or use conda or pip.
 
-- Play notebook without source using 'Voila':
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/robot144/wetwin/HEAD?labpath=wetwin_dcsm_maps.ipynb) 
-- Play notebook showing the source code: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/robot144/wetwin/HEAD?urlpath=voila%2Frender%2Fwetwin_dcsm_maps.ipynb)
+### Installing prerequisites with conda 
 
-In addition to this demo, there are a few notebooks that illustrate the wetwin tools. They illustrate how you can use the tools. In order of increasing complexity:
+If you use anaconda or a variant of it, the we recommend to create a new environment. This makes sure that the new packages do not interfere with your other work. Here are the steps:
 
-- for wetwin widgets wetwin_widgets.ipynb [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/robot144/wetwin/HEAD?labpath=wetwin_widgets.ipynb)
-- for ipyleaflet maps maps.ipynb [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/robot144/wetwin/HEAD?labpath=maps.ipynb)
-- for xarray for access to zarr data over internet, zunormm_data.ipynb [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/robot144/wetwin/HEAD?labpath=zunormm_data.ipynb)
-- for access to csv data over internet with pandas, data_timeseries.ipynb [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/robot144/wetwin/HEAD?labpath=data_timeseries.ipynb)
+- `conda env create -f environment.yml` This will create a new environment called wetwin and installs the packages. This can take some time.
+- `conda activate wetwin` This activates the wetwin environment. Your prompt should now contain (wetwin)
+- `python -m ipykernel install --user --name=wetwin-kernel` Register a jupyter kernel with the wetwin environment. The name should also show up in vscode for example.
 
+### Installing prerequisites with pip
 
-### Some technical notes
+Alternatively, the packages can be installed in a virtual environment with pip. We do not recommend to install packages in the main environment, especially on linux, since this poses a risk to the stability of your system. We also do not recommend to mix installation with conda and pip. Here are the steps:
 
-- Voila is a package that strips the code and editing functionality from a notebook and just shows the text and results. Together with ipywidgets you can make the page interactive and make the code respond to the buttons that you add.
-- you can install voila also locally (with pip or conda) and run eg `voila wetwin_widgets.ipynb` to preview the app locally first.
-- The standard netCDF4 library cannot read from a regular download, ie one that is not backed by opendap. Using Xarray, this can be done however. The advantage is that a regular web-url will be enough to access the netcdf file. 
-- The pandas package can easily read from a url.
-- Storage for the data on github is limited to 100Mb per file. Some other storage options for the academic commmunity in the Netherlands can be obtained  using research-drive from surfsara (https://researchdrive.surfsara.nl/index.php/login), which can be obtained together with an account on Snellius or Lisa, or surfdrive as available to all employees of the TU Delft (surfdrive.surf.nl). It is also possible to rent storage commercially (eg at hetzner storage share 3 to 5 euro/Tb/month). If you also want to control access to the data with keys, then S3 is a good solution. Amazon is the creator of S3, but it's difficult to make sense of their prices, scaleways has a more understandable offer. There are many options.
+- `python3 -m venv .venv` Create a new virtual python environment.
+- `source .venv/bin/activate` Activate the new environment.
+- `python3 -m pip install -r requirements.txt` Install the packages listed in the file requirements.txt
+- `python -m ipykernel install --user --name=wetwin-kernel` Register a jupyter kernel with the wetwin environment. The name should also show up in vscode for example.
 
 
+Note that when you use the command promps then you have to activate the enviroment at every new terminal session.

@@ -13,4 +13,7 @@ dependencies:
   - aiohttp
   - ipywidgets
   - ipympl
+  - ipyleaflet
   - leafmap
+  - jupyterlab
+  - pandas
